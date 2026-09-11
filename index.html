@@ -305,23 +305,8 @@ a.pcard:hover .go::after{transform:translateX(4px)}
 .pc b{font-weight:600}.pc em{font-style:normal;font-size:.75rem;color:var(--dark);background:var(--saffron-2);padding:2px 8px;border-radius:999px;width:max-content}
 .pc small{color:rgba(255,255,255,.6);font-size:.82rem;line-height:1.35}
 .pc.none small{color:rgba(255,255,255,.35);font-style:italic}
-.p2{margin-top:18px;background:linear-gradient(135deg,var(--crimson),var(--crimson-2));border-radius:var(--r);padding:clamp(22px,3.5vw,36px);position:relative;overflow:hidden}
-.p2::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-140px;top:-160px;background:radial-gradient(circle,rgba(255,138,30,.45),transparent 70%)}
-.p2>*{position:relative}
-.p2head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
-.p2 h3{font-size:clamp(1.4rem,2.6vw,1.9rem);color:#fff}.p2 p{color:rgba(255,255,255,.82);margin-top:8px;max-width:620px;font-size:.95rem}
-.rates{display:flex;gap:10px}.rates span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:10px 14px;display:grid;text-align:center}
-.rates b{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:700}.rates small{font-size:.72rem;color:rgba(255,255,255,.7)}
-.slots{display:grid;grid-template-columns:repeat(11,1fr);gap:8px;margin-top:22px}
-.slot2{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:10px 6px;text-align:center;display:grid;gap:1px}
-.slot2 strong{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:500;line-height:1}.slot2 span{font-size:.68rem;color:rgba(255,255,255,.7)}
-.slot2 small{font-size:.68rem;font-weight:700;margin-top:4px;line-height:1.2}
-.slot2.open small{color:var(--saffron-2)}
-.slot2.open{border-style:dashed}
-.slot2.taken{background:rgba(255,255,255,.22);border-color:#fff}.slot2.taken small{color:#fff;font-weight:600}
-.slot2.past{opacity:.45}
-.p2foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:.9rem;color:rgba(255,255,255,.88)}
-.p2foot a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.pfoot{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;margin-top:16px;font-size:.88rem;color:rgba(255,255,255,.75)}.pfoot b{color:#fff}
+.pfoot a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}.pfoot .more{margin-left:auto}
 .more{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:inherit;font-size:.85rem;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer}
 .guide[hidden]{display:none}
 .guide{margin-top:16px;padding-left:20px;display:grid;gap:6px;font-size:.88rem;color:rgba(255,255,255,.85)}
@@ -331,7 +316,6 @@ a.pcard:hover .go::after{transform:translateX(4px)}
   .pc::before{content:"Morning";font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--saffron-2)}
   .pr>.pc:last-child::before{content:"Evening"}
   .pr.ph{display:none}
-  .p2head{grid-template-columns:1fr}.slots{grid-template-columns:repeat(4,1fr)}
 }
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:820px){.trio{grid-template-columns:1fr}}
@@ -590,30 +574,21 @@ footer small{display:block;margin-top:34px;font-size:.8rem;color:rgba(255,255,25
       <p>Morning prasadam after the 8 AM pooja, evening prasadam after the evening pooja — and the families and blocks who are sponsoring each day.</p>
     </div>
     <div class="ptable reveal" id="ptable"></div>
-    <div class="p2 reveal">
-      <div class="p2head">
-        <div>
-          <h3>Sponsor a second evening prasadam</h3>
-          <p>Evening crowds are the largest, so each day has a slot for an additional evening prasadam. Pick an open day below — slots are confirmed first-come, first-confirmed once the contribution is received.</p>
-        </div>
-        <div class="rates"><span><b>₹5,116</b><small>morning, per day</small></span><span><b>₹11,116</b><small>evening, per day</small></span></div>
-      </div>
-      <div class="slots" id="slots"></div>
-      <div class="p2foot">
-        <span>To sponsor, message the SPOCs: <b>Harjun</b> or <b>Ramprasad</b> <a href="tel:+918688890800">86888 90800</a></span>
-        <button class="more" id="pguide-btn" type="button">Sponsorship guidelines</button>
-      </div>
-      <ol class="guide" id="pguide" hidden>
-        <li>Morning prasadam ₹5,116 per day; evening prasadam ₹11,116 per day.</li>
-        <li>Sponsorship can be taken individually or as a group.</li>
-        <li>Only committee contributions are announced in the official group and on the mic after the pooja at the Ganesh Mandapam.</li>
-        <li>Devotees may offer prasadam personally, but it will not be announced in the official group.</li>
-        <li>Slots are confirmed once the contribution is received — first come, first confirmed.</li>
-        <li>All sponsorships and contributions are recorded by the committee.</li>
-        <li>Sponsorship is completely voluntary.</li>
-        <li>Questions: reach out to SPOCs Harjun or Ramprasad.</li>
-      </ol>
+    <div class="pfoot reveal">
+      <span>Morning prasadam <b>₹5,116</b> · Evening prasadam <b>₹11,116</b> per day, individually or as a group</span>
+      <span>Queries: SPOCs <b>Harjun</b> or <b>Ramprasad</b> <a href="tel:+918688890800">86888 90800</a></span>
+      <button class="more" id="pguide-btn" type="button">Sponsorship guidelines</button>
     </div>
+    <ol class="guide" id="pguide" hidden>
+      <li>Morning prasadam ₹5,116 per day; evening prasadam ₹11,116 per day.</li>
+      <li>Sponsorship can be taken individually or as a group.</li>
+      <li>Only committee contributions are announced in the official group and on the mic after the pooja at the Ganesh Mandapam.</li>
+      <li>Devotees may offer prasadam personally, but it will not be announced in the official group.</li>
+      <li>Slots are confirmed once the contribution is received — first come, first confirmed.</li>
+      <li>All sponsorships and contributions are recorded by the committee.</li>
+      <li>Sponsorship is completely voluntary.</li>
+      <li>Questions: reach out to SPOCs Harjun or Ramprasad.</li>
+    </ol>
   </div>
 </section>
 
@@ -708,12 +683,6 @@ const PRASADAM=[
  {date:"2026-09-23",day:10,am:{item:"Bonda + Chutney",qty:"600 pcs",by:"Naimisha Srikari & Krishna Deepak, D-1104"},pm:{item:"Veg Biryani + Kurma",qty:"60 kg",by:"Dinesh Bobbili & Riya, F-1102"}},
  {date:"2026-09-24",day:11,pm:{item:"Pulihora",qty:"50 kg",by:"F block"}},
 ];
-/* second evening prasadam — open sponsorship slots. by: sponsor once confirmed; note: e.g. "half paid" */
-const PRASADAM2=[
- {date:"2026-09-14"},{date:"2026-09-15"},{date:"2026-09-16"},{date:"2026-09-17"},{date:"2026-09-18"},
- {date:"2026-09-19",by:"Prudhvi, A block",note:"half paid"},
- {date:"2026-09-20"},{date:"2026-09-21"},{date:"2026-09-22"},{date:"2026-09-23"},{date:"2026-09-24"},
-];
 /* Cultural programmes — tentative, from the Cultural Committee. Venue Amphitheatre; Clubhouse if it rains. */
 const CULTURALS=[
  {date:"2026-09-13",title:"Ganesh Idol Making",note:"10:00 AM – 12:30 PM"},
@@ -799,8 +768,6 @@ const pcell=x=>x?`<div class="pc"><b>${x.item}</b>${x.qty?`<em>${x.qty}</em>`:""
 document.getElementById("ptable").innerHTML=`<div class="pr ph"><span>Day</span><span>Morning</span><span>Evening</span></div>`+
  PRASADAM.map(r=>`<div class="pr${r.date===today?" today":r.date<today?" past":""}"><div class="pd"><strong>${r.date.slice(8)}</strong><span>Sep · ${wd(r.date)}</span><small>Day ${r.day}</small></div>${pcell(r.am)}${pcell(r.pm)}</div>`).join("");
 
-/* second-prasadam slots */
-document.getElementById("slots").innerHTML=PRASADAM2.map(x=>`<div class="slot2${x.by?" taken":" open"}${x.date<today?" past":""}"><strong>${x.date.slice(8)}</strong><span>${wd(x.date)}</span><small>${x.by?x.by+(x.note?` · ${x.note}`:""):"Open"}</small></div>`).join("");
 document.getElementById("pguide-btn").onclick=e=>{const g=document.getElementById("pguide");g.hidden=!g.hidden;e.target.textContent=g.hidden?"Sponsorship guidelines":"Hide guidelines"};
 
 /* ================= COUNTDOWN ================= */
