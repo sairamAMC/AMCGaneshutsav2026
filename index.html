@@ -63,8 +63,15 @@ nav.scrolled{background:rgba(18,10,11,.82);backdrop-filter:blur(16px);-webkit-ba
 .hero .inner{padding:130px 0 110px;max-width:760px}
 .hero .sloka{font-family:"Noto Sans Telugu",sans-serif;color:var(--saffron-2);font-size:1.05rem;margin-bottom:22px}
 .hero .kicker{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);padding:8px 14px 8px 10px;border-radius:999px;margin-bottom:26px}
-.visits{display:inline-flex;align-items:center;gap:8px;margin:-14px 0 26px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);color:rgba(255,255,255,.85);font-size:.8rem;padding:6px 12px;border-radius:999px;animation:pop .6s var(--ease)}.visits[hidden]{display:none}.visits svg{width:15px;height:15px}.visits b{color:var(--saffron-2);font-weight:700}
+.visits{display:inline-flex;align-items:center;gap:10px;margin:-14px 0 26px;background:linear-gradient(135deg,rgba(255,138,30,.28),rgba(180,30,46,.28));border:1px solid rgba(255,179,71,.6);backdrop-filter:blur(10px);color:#fff;padding:7px 16px 7px 12px;border-radius:999px;box-shadow:0 0 0 0 rgba(255,138,30,.5);animation:pop .6s var(--ease),vpulse 2.6s ease-out 1s infinite}
+.visits[hidden]{display:none}
+.visits i{width:9px;height:9px;border-radius:50%;background:#7CE0A6;box-shadow:0 0 0 3px rgba(124,224,166,.25);animation:blink 1.6s ease-in-out infinite}
+.visits span{display:flex;align-items:baseline;gap:6px}
+.visits b{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--saffron-2);line-height:1;text-shadow:0 0 14px rgba(255,179,71,.6)}
+.visits small{font-size:.78rem;color:rgba(255,255,255,.85);font-weight:600}
 @keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes vpulse{0%{box-shadow:0 0 0 0 rgba(255,138,30,.5)}70%{box-shadow:0 0 0 12px rgba(255,138,30,0)}100%{box-shadow:0 0 0 0 rgba(255,138,30,0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}to{opacity:1;transform:none}}
 .hero .kicker b{width:8px;height:8px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 0 rgba(255,138,30,.7);animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,138,30,.7)}70%{box-shadow:0 0 0 10px rgba(255,138,30,0)}100%{box-shadow:0 0 0 0 rgba(255,138,30,0)}}
 .hero h1{font-size:clamp(3rem,9vw,6.4rem);font-weight:700;color:#fff}
@@ -306,8 +313,8 @@ a.pcard:hover .go::after{transform:translateX(4px)}
 .pc{padding:16px 18px;border-left:1px solid rgba(255,255,255,.08);display:grid;align-content:start;gap:3px}
 .pc b{font-weight:600}.pc em{font-style:normal;font-size:.75rem;color:var(--dark);background:var(--saffron-2);padding:2px 8px;border-radius:999px;width:max-content}
 .pc small{color:rgba(255,255,255,.6);font-size:.82rem;line-height:1.35;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.pc .sp{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7CE0A6;background:rgba(124,224,166,.14);border:1px solid rgba(124,224,166,.45);padding:2px 8px;border-radius:999px;white-space:nowrap}
-.pc .sp::before{content:"✓ "}
+.pc .sp{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dark);background:linear-gradient(135deg,var(--saffron-2),var(--gold));padding:3px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 0 10px rgba(255,179,71,.55),0 0 22px rgba(226,176,74,.35);animation:spglow 2.4s ease-in-out infinite alternate}
+@keyframes spglow{from{box-shadow:0 0 6px rgba(255,179,71,.45),0 0 14px rgba(226,176,74,.25)}to{box-shadow:0 0 14px rgba(255,179,71,.85),0 0 30px rgba(226,176,74,.55)}}
 .pc.none small{color:rgba(255,255,255,.35);font-style:italic}
 .pfoot{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;margin-top:16px;font-size:.88rem;color:rgba(255,255,255,.75)}.pfoot b{color:#fff}
 .pfoot a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}.pfoot .more{margin-left:auto}
@@ -381,7 +388,7 @@ footer small{display:block;margin-top:34px;font-size:.8rem;color:rgba(255,255,25
   <div class="wrap"><div class="inner">
     <div class="sloka">॥ శ్రీ గణేశాయ నమః ॥</div>
     <div class="kicker"><b></b>12 – 24 September 2026 · Ambience Courtyard, Manikonda</div>
-    <div class="visits" id="visits" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg><span><b id="visits-n">–</b> visits so far</span></div>
+    <div class="visits" id="visits" hidden><i></i><span><b id="visits-n">–</b><small>visits so far</small></span></div>
     <h1>Ganesh <em>Chaturthi</em><br>at the Courtyard</h1>
     <p class="sub">Bappa arrives on 12 September. Eleven days of pooja, parayanam, prasadam and celebration — and a place for every family to take part.</p>
     <div class="actions">
@@ -769,7 +776,7 @@ const fmtD=d=>new Date(d+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",
 document.getElementById("events-cards").innerHTML=EVENTS.map(i=>`<div class="card reveal"><time>${fmtD(i.date)}</time><h3>${i.title}</h3>${i.note?`<p>${i.note}</p>`:""}</div>`).join("");
 
 /* prasadam table */
-const pcell=x=>x?`<div class="pc"><b>${x.item}</b>${x.qty?`<em>${x.qty}</em>`:""}<small><i class="sp">Sponsored</i>${x.by}</small></div>`:`<div class="pc none"><small>No morning prasadam</small></div>`;
+const pcell=x=>x?`<div class="pc"><b>${x.item}</b>${x.qty?`<em>${x.qty}</em>`:""}<small><i class="sp">Sponsored by</i>${x.by}</small></div>`:`<div class="pc none"><small>No morning prasadam</small></div>`;
 document.getElementById("ptable").innerHTML=`<div class="pr ph"><span>Day</span><span>Morning</span><span>Evening</span></div>`+
  PRASADAM.map(r=>`<div class="pr${r.date===today?" today":r.date<today?" past":""}"><div class="pd"><strong>${r.date.slice(8)}</strong><span>Sep · ${wd(r.date)}</span><small>Day ${r.day}</small></div>${pcell(r.am)}${pcell(r.pm)}</div>`).join("");
 
