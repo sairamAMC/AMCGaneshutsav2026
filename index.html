@@ -145,6 +145,8 @@ section{padding:clamp(72px,10vw,120px) 0}
 .dayc .reg.open{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85)}
 .dayc.past{opacity:.55}.dayc.past:hover{opacity:.85}
 .dayc .flag.done{color:rgba(255,255,255,.45)}
+.dayc .cult{display:grid;grid-template-columns:20px 1fr;gap:2px 8px;align-items:baseline;margin-top:10px;padding:8px 10px;border-radius:10px;background:rgba(226,176,74,.12);border:1px solid rgba(226,176,74,.3);font-size:.82rem}
+.dayc .cult i{font-style:normal;grid-row:span 2;font-size:.9rem}.dayc .cult span{color:var(--gold);font-weight:600}.dayc .cult small{color:rgba(255,255,255,.55);display:block}
 .dayc .note{font-size:.82rem;color:rgba(255,255,255,.6);padding-top:10px;border-top:1px solid rgba(255,255,255,.08);line-height:1.4}
 
 /* daily rhythm + legend */
@@ -273,6 +275,7 @@ a.pcard:hover .go::after{transform:translateX(4px)}
 .soon p{color:var(--muted);margin-top:6px;max-width:440px;margin-inline:auto}
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:820px){.trio{grid-template-columns:1fr}}
+.boxh{font-family:"Fraunces",serif;font-size:1.5rem;margin-bottom:14px}.foot{margin-top:14px;font-size:.85rem;color:var(--muted)}
 .trio .soon{text-align:left}.trio .soon p{margin-inline:0}
 
 /* gallery */
@@ -314,7 +317,7 @@ footer small{display:block;margin-top:34px;font-size:.8rem;color:rgba(255,255,25
       <li><a href="#participate">Participate</a></li>
       <li><a href="#contribute">Contribute</a></li>
       <li><a href="#prasadam">Prasadam</a></li>
-      <li><a href="#events">Events</a></li>
+      <li><a href="#culturals">Culturals</a></li>
       <li><a href="#gallery">Gallery</a></li>
     </ul>
   </div>
@@ -507,12 +510,12 @@ footer small{display:block;margin-top:34px;font-size:.8rem;color:rgba(255,255,25
   <div class="wrap">
     <div class="head center reveal">
       <h2>Prasadam, events <em>&amp; culturals</em></h2>
-      <p>Prasadam and culturals will appear here as they're finalised. Watch the Pooja Updates group too.</p>
+      <p>Prasadam schedule will appear here once finalised. Watch the Pooja Updates group too.</p>
     </div>
     <div class="trio">
       <div class="soon reveal" id="prasadam-box"><i>🍛</i><b>Prasadam schedule</b><p>Daily prasadam after the evening pooja.</p></div>
       <div class="soon reveal" data-d="1" id="events-box"><i>🎉</i><b>Events</b><p>Special programmes across the eleven days.</p></div>
-      <div class="soon reveal" data-d="2" id="culturals-box"><i>🎭</i><b>Culturals</b><p>Performances by residents of all ages — sign up with your block volunteer.</p></div>
+      <div class="soon reveal" data-d="2" id="culturals-box"><i>🎭</i><b>Cultural programmes</b><p>Performances by residents of all ages.</p></div>
     </div>
     <span id="events"></span><span id="culturals"></span>
   </div>
@@ -589,7 +592,17 @@ const BLOCKS={
  I:[{name:"Srikanth Boorle",upi:"9290857624@idfcfirst",phone:"9290857624"},{name:"Bharat Kumar Kaja",upi:"bharatkaza@axl",phone:"9886841048",app:"GPay / PhonePe"}],
 };
 /* Add entries like {date:"2026-09-14",title:"Undrallu & Pulihora",note:"After Kalash Sthapana"} */
-const PRASADAM=[], CULTURALS=[];
+const PRASADAM=[];
+/* Cultural programmes — tentative, from the Cultural Committee. Venue Amphitheatre; Clubhouse if it rains. */
+const CULTURALS=[
+ {date:"2026-09-13",title:"Ganesh Idol Making",note:"10:00 AM – 12:30 PM"},
+ {date:"2026-09-14",title:"Classical Dance",note:"7:30 – 9:30 PM"},
+ {date:"2026-09-15",title:"Music, Talent & Group Singing",note:"7:30 – 9:30 PM"},
+ {date:"2026-09-17",title:"Solo Singing",note:"7:30 – 9:30 PM"},
+ {date:"2026-09-18",title:"Group Dance",note:"7:30 – 9:30 PM"},
+ {date:"2026-09-22",title:"Solo Dance & Skit",note:"7:30 – 9:30 PM"},
+];
+const CULT_NOTE="Venue: Amphitheatre (Clubhouse if it rains). Tentative — may shift with final registrations and programme length.";
 const EVENTS=[
  {date:"2026-09-19",title:"Kids Saraswati Pooja",note:"Children perform the pooja with the priest. Register on the participate section."},
  {date:"2026-09-20",title:"108 Prasadams",note:"After Ganapati Homam — a special offering of 108 prasadams in the evening."},
@@ -613,6 +626,7 @@ document.getElementById("days").innerHTML=SCHEDULE.map((s,k)=>{
   <div class="slot"><i>AM</i><div>${am.length?am.map((x,i)=>item(x,i===0?flag:"")).join(""):`<small>—</small>`}</div></div>
   ${pm.length?`<div class="slot"><i>PM</i><div>${pm.map((x,i)=>item(x,i===0&&!am.length?flag:"")).join("")}</div></div>`:""}
   ${s.note?`<div class="note">${s.note}</div>`:""}
+  ${CULTURALS.filter(c=>c.date===s.date).map(c=>`<div class="cult"><i>🎭</i><span>${c.title}</span><small>${c.note}</small></div>`).join("")}
  </div>`}).join("");
 
 /* ================= COLLECTORS ================= */
@@ -646,13 +660,13 @@ pills.onclick=e=>{const p=e.target.closest(".pill");if(!p)return;pills.querySele
 renderCols("All");
 
 /* ================= LISTS ================= */
-function fillBox(id,items){
+function fillBox(id,items,foot){
   if(!items.length)return;
   const box=document.getElementById(id);
   box.className="reveal in"; box.style.gridColumn="1/-1";
-  box.innerHTML=`<div class="cards">${items.map(i=>`<div class="card"><time>${new Date(i.date+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short",weekday:"short"})}</time><h3>${i.title}</h3>${i.note?`<p>${i.note}</p>`:""}</div>`).join("")}</div>`;
+  box.innerHTML=`<h3 class="boxh">${box.querySelector("b").textContent}</h3><div class="cards">${items.map(i=>`<div class="card"><time>${new Date(i.date+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short",weekday:"short"})}</time><h3>${i.title}</h3>${i.note?`<p>${i.note}</p>`:""}</div>`).join("")}</div>${foot?`<p class="foot">${foot}</p>`:""}`;
 }
-fillBox("prasadam-box",PRASADAM);fillBox("events-box",EVENTS);fillBox("culturals-box",CULTURALS);
+fillBox("prasadam-box",PRASADAM);fillBox("events-box",EVENTS);fillBox("culturals-box",CULTURALS,CULT_NOTE);
 
 /* ================= COUNTDOWN ================= */
 (function(){
