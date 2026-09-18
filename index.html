@@ -315,6 +315,7 @@ a.pcard:hover .go::after{transform:translateX(4px)}
 .pc small{color:rgba(255,255,255,.6);font-size:.82rem;line-height:1.35;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .pc .sp{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dark);background:linear-gradient(135deg,var(--saffron-2),var(--gold));padding:3px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 0 10px rgba(255,179,71,.55),0 0 22px rgba(226,176,74,.35);animation:spglow 2.4s ease-in-out infinite alternate}
 @keyframes spglow{from{box-shadow:0 0 6px rgba(255,179,71,.45),0 0 14px rgba(226,176,74,.25)}to{box-shadow:0 0 14px rgba(255,179,71,.85),0 0 30px rgba(226,176,74,.55)}}
+.px{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:10px 18px;border-top:1px dashed rgba(255,255,255,.15);background:rgba(255,138,30,.1)}.px b{font-family:"Fraunces",serif;font-size:1.05rem;color:var(--saffron-2)}.px span{font-size:.82rem;color:rgba(255,255,255,.75)}
 .pc.none small{color:rgba(255,255,255,.35);font-style:italic}
 .pfoot{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;margin-top:16px;font-size:.88rem;color:rgba(255,255,255,.75)}.pfoot b{color:#fff}
 .pfoot a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}.pfoot .more{margin-left:auto}
@@ -664,7 +665,7 @@ const SCHEDULE=[
  {date:"2026-09-17",day:4,am:[{t:"8:00 AM",title:CP}],pm:[{t:"Evening",title:"Mahalakshmi Ammavaru Ashtotram",note:"by AMC Women"},{t:"7:00 PM",title:CP}],tag:"Special"},
  {date:"2026-09-18",day:5,am:[{t:"8:00 AM",title:CP}],pm:[{t:"7:00 PM",title:"Kumkumarchana",reg:"special"},{t:"6:30 PM",title:CP}],tag:"Special"},
  {date:"2026-09-19",day:6,am:[{t:"8:00 AM",title:CP}],pm:[{t:"7:00 PM",title:"Saraswati Pooja",note:"for children",reg:"kids"},{t:"6:30 PM",title:CP}],tag:"Special"},
- {date:"2026-09-20",day:7,am:[{t:"9:00 AM",title:"Ganapati Homam"},{t:"8:00 AM",title:CP}],pm:[{t:"Evening",title:"108 Prasadams"},{t:"7:00 PM",title:CP}],tag:"Homam"},
+ {date:"2026-09-20",day:7,am:[{t:"9:00 AM",title:"Ganapati Homam"},{t:"8:00 AM",title:CP}],pm:[{t:"12:30 PM onwards",title:"Mahaprasadam",note:"all residents welcome"},{t:"Evening",title:"108 Prasadams"},{t:"7:00 PM",title:CP}],tag:"Homam"},
  {date:"2026-09-21",day:8,am:[{t:"8:00 AM",title:CP}],pm:[{t:"7:00 PM",title:"Eka Rudrabhishekam",reg:"special"},{t:"6:30 PM",title:CP}],tag:"Special"},
  {date:"2026-09-22",day:9,am:[{t:"8:00 AM",title:CP}],pm:[{t:"Evening",title:"Vishnu Sahasranamam parayanam",note:"Ekadasi · Paarayanam group",open:true},{t:"7:00 PM",title:CP}],tag:"Parayanam"},
  {date:"2026-09-23",day:10,am:[{t:"8:00 AM",title:CP}],pm:[{t:"7:00 PM",title:"Ganapati Abhishekam",reg:"special"},{t:"6:30 PM",title:CP}],tag:"Special"},
@@ -689,7 +690,7 @@ const PRASADAM=[
  {date:"2026-09-17",day:4,am:{item:"Vada + Chutney",qty:"600 pcs",by:"Mahendra, D block"},pm:{item:"Bisi Bele Bath",qty:"40 kg",by:"Devineni Aditya, A block"}},
  {date:"2026-09-18",day:5,am:{item:"Katte Pongali",qty:"5 kg",by:"Elluri Lavanya & family, D-1009"},pm:{item:"Pongal + Chutney",qty:"50 kg",by:"D block"}},
  {date:"2026-09-19",day:6,am:{item:"Rava Kesari",qty:"5 kg",by:"Shreyansh Sakilam, E-607"},pm:{item:"Dry Rava + Chutney",qty:"50 kg",by:"G block"}},
- {date:"2026-09-20",day:7,am:{item:"Pulihora",qty:"7 kg",by:"I block"},pm:{item:"Prasadam",qty:"",by:"I block"}},
+ {date:"2026-09-20",day:7,am:{item:"Pulihora",qty:"7 kg",by:"I block"},pm:{item:"Prasadam",qty:"",by:"I block"},extra:{item:"Mahaprasadam",t:"12:30 PM onwards"}},
  {date:"2026-09-21",day:8,am:{item:"Sweet Boondi",qty:"5 kg",by:"GP Rao & Seetha Ganti, I-002"},pm:{item:"Jeera Rice + Dal",qty:"50 kg",by:"I block"}},
  {date:"2026-09-22",day:9,am:{item:"Masala Vada",qty:"600 pcs",by:"B block"},pm:{item:"Tomato Rice",qty:"50 kg",by:"B block"}},
  {date:"2026-09-23",day:10,am:{item:"Bonda + Chutney",qty:"600 pcs",by:"Naimisha Srikari & Krishna Deepak, D-1104"},pm:{item:"Veg Biryani + Kurma",qty:"60 kg",by:"Dinesh Bobbili & Riya, F-1102"}},
@@ -707,6 +708,7 @@ const CULTURALS=[
 
 const EVENTS=[
  {date:"2026-09-19",title:"Kids Saraswati Pooja",note:"Children perform the pooja with the priest. Register on the participate section."},
+ {date:"2026-09-20",title:"Mahaprasadam",note:"From 12:30 PM onwards, after Ganapati Homam. All residents and families are welcome."},
  {date:"2026-09-20",title:"108 Prasadams",note:"After Ganapati Homam — a special offering of 108 prasadams in the evening."},
  {date:"2026-09-24",title:"Harathi by AMC Women",note:"Closing harathi after Visarjan Pooja."},
 ];
@@ -778,7 +780,7 @@ document.getElementById("events-cards").innerHTML=EVENTS.map(i=>`<div class="car
 /* prasadam table */
 const pcell=x=>x?`<div class="pc"><b>${x.item}</b>${x.qty?`<em>${x.qty}</em>`:""}<small><i class="sp">Sponsored by</i>${x.by}</small></div>`:`<div class="pc none"><small>No morning prasadam</small></div>`;
 document.getElementById("ptable").innerHTML=`<div class="pr ph"><span>Day</span><span>Morning</span><span>Evening</span></div>`+
- PRASADAM.map(r=>`<div class="pr${r.date===today?" today":r.date<today?" past":""}"><div class="pd"><strong>${r.date.slice(8)}</strong><span>Sep · ${wd(r.date)}</span><small>Day ${r.day}</small></div>${pcell(r.am)}${pcell(r.pm)}</div>`).join("");
+ PRASADAM.map(r=>`<div class="pr${r.date===today?" today":r.date<today?" past":""}"><div class="pd"><strong>${r.date.slice(8)}</strong><span>Sep · ${wd(r.date)}</span><small>Day ${r.day}</small></div>${pcell(r.am)}${pcell(r.pm)}${r.extra?`<div class="px"><b>${r.extra.item}</b><span>${r.extra.t}</span></div>`:""}</div>`).join("");
 
 document.getElementById("pguide-btn").onclick=e=>{const g=document.getElementById("pguide");g.hidden=!g.hidden;e.target.textContent=g.hidden?"Sponsorship guidelines":"Hide guidelines"};
 
